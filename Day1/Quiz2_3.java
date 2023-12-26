@@ -11,19 +11,14 @@ public class Quiz2_3 {
         str = obj.next();
         int n = str.length();
         int l1 = (n / 3) + 1, l2 = l1 - 2;
-        int temp1 = l1, temp2 = l2, t2 = l2;
+        int  temp2 = l2;
         for (int i = 0; i < n; i++) {
             if (i >= l1 && temp2 >= 0) {
                 System.out.println();
                 for (int s = temp2; s >= 1; s--) {
                     System.out.print("  ");
                 }
-                System.out.print(str.charAt(i));
-                
-                temp1--;
-                if (temp1 == 2) {
-                    l1 = 0;
-                }
+                System.out.print(str.charAt(i));            
                 temp2--;
             } else {
                 System.out.print(str.charAt(i)+" ");
