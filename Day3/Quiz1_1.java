@@ -51,7 +51,7 @@ class BankAccount {
         System.out.println("Account ID:");
         int accountIdB = scanner.nextInt();
         System.out.println("Account Name:");
-        scanner.nextLine(); // Consume the newline character
+        scanner.nextLine(); 
         String accountNameB = scanner.nextLine();
         System.out.println("Initial Balance for Account B:");
         double initialBalanceB = scanner.nextDouble();
