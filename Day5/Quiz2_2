@@ -1,0 +1,42 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class PositiveNumberChecker {
+
+    public static void main(String[] args) {
+        String fileName = "test.txt";
+
+        try {
+            checkPositiveNumbers(fileName);
+        } catch (IOException e) {
+            System.out.println("Error reading the file: " + e.getMessage());
+        } catch (PositiveNumberException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void checkPositiveNumbers(String fileName) throws IOException, PositiveNumberException {
+        FileReader fileReader = new FileReader(fileName);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String line;
+
+        while ((line = bufferedReader.readLine()) != null) {
+            String[] numbers = line.split("\\s+");
+            for (String number : numbers) {
+                int num = Integer.parseInt(number);
+                if (num > 0) {
+                    throw new PositiveNumberException("Positive number found: " + num);
+                }
+            }
+        }
+
+        bufferedReader.close();
+    }
+}
+
+class PositiveNumberException extends Exception {
+    public PositiveNumberException(String message) {
+        super(message);
+    }
+}
