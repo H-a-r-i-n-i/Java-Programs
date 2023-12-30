@@ -1,0 +1,48 @@
+class PrimeThread implements Runnable {
+ public void run() {
+ System.out.print("Prime numbers from 0 to 10: ");
+ for (int i = 2; i <= 10; i++) {
+ if (isPrime(i)) {
+ System.out.print(i + " ");
+ }
+ }
+ }
+ private boolean isPrime(int num) {
+ if (num <= 1) {
+ return false;
+ }
+ for (int i = 2; i <= Math.sqrt(num); i++) {
+ if (num % i == 0) {
+ return false;
+ }
+ }
+ return true;
+ }
+}
+class PalindromeThread implements Runnable {
+ public void run() {
+ System.out.print("\nPalindrome numbers from 10 to 50: ");
+ for (int i = 10; i <= 50; i++) {
+ if (isPalindrome(i)) {
+ System.out.print(i + " ");
+ }
+ }
+ }
+ private boolean isPalindrome(int num) {
+ int original = num;
+ int reversed = 0;
+ while (num != 0) {
+ int digit = num % 10;
+ reversed = reversed * 10 + digit;
+ num /= 10;
+ }
+ return original == reversed;
+ }
+}
+public class Main {
+ public static void main(String[] args) {
+ Thread t1 = new Thread(new PrimeThread());
+ Thread t2 = new Thread(new PalindromeThread());
+ t1.start();
+ t2.start();
+ }
