@@ -1,5 +1,3 @@
-package zoho;
-
 import java.util.Scanner;
 
 public class a4b3Reverse {
